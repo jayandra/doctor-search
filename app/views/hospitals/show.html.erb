@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to hospitals_path, :class => 'btn' do %>
+    <i class="icon-list-alt"></i>
+    Back
+  <% end %>
+  <%= link_to edit_hospital_path(@hospital), :class => 'btn btn-primary' do %>
+    <i class="icon-pencil icon-white"></i>
+    Edit
+  <% end %>
+  <h1>Listing hospitals</h1>
+</div>
+
+<dl>
+  <dt>Name:</dt>
+  <dd><%= @hospital.name %></dd>
+
+  <dt>Address:</dt>
+  <dd><%= @hospital.address %></dd>
+
+  <dt>City:</dt>
+  <dd><%= @hospital.city %></dd>
+
+  <dt>Phone1:</dt>
+  <dd><%= @hospital.phone1 %></dd>
+
+  <dt>Phone2:</dt>
+  <dd><%= @hospital.phone2 %></dd>
+
+  <dt>Image:</dt>
+  <dd><%= @hospital.image %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @hospital.description %></dd>
+
+</dl>

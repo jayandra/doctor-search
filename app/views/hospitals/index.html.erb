@@ -1,0 +1,41 @@
+<div class="page-header">
+  <%= link_to new_hospital_path, :class => 'btn btn-primary' do %>
+    <i class="icon-plus icon-white"></i>
+    New Hospital
+  <% end %>
+  <h1>Listing hospitals</h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Phone1</th>
+      <th>Phone2</th>
+      <th>Image</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @hospitals.each do |hospital| %>
+    <tr>
+      <td><%= hospital.name %></td>
+      <td><%= hospital.address %></td>
+      <td><%= hospital.city %></td>
+      <td><%= hospital.phone1 %></td>
+      <td><%= hospital.phone2 %></td>
+      <td><%= hospital.image %></td>
+      <td><%= hospital.description %></td>
+      <td><%= link_to 'Show', hospital %></td>
+      <td><%= link_to 'Edit', edit_hospital_path(hospital) %></td>
+      <td><%= link_to 'Destroy', hospital, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
