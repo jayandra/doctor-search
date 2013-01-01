@@ -1,4 +1,7 @@
 class Department < ActiveRecord::Base
-  belongs_to :hospital
   attr_accessible :name
+
+  validates_presence_of :name
+
+  belongs_to :hospital
 end
