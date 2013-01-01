@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101052419) do
+ActiveRecord::Schema.define(:version => 20130101073641) do
+
+  create_table "departments", :force => true do |t|
+    t.string   "name"
+    t.integer  "hospital_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "departments", ["hospital_id"], :name => "index_departments_on_hospital_id"
 
   create_table "hospitals", :force => true do |t|
     t.string   "name"
