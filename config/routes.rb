@@ -1,4 +1,7 @@
 DoctorSearch::Application.routes.draw do
+  resources :involvements
+
+
   resources :departments
 
 

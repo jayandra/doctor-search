@@ -1,0 +1,37 @@
+<div class="page-header">
+  <%= link_to new_involvement_path, :class => 'btn btn-primary' do %>
+    <i class="icon-plus icon-white"></i>
+    New Involvement
+  <% end %>
+  <h1>Listing involvements</h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Allow appointment</th>
+      <th>Price</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Hospital</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @involvements.each do |involvement| %>
+    <tr>
+      <td><%= involvement.allow_appointment %></td>
+      <td><%= involvement.price %></td>
+      <td><%= involvement.from %></td>
+      <td><%= involvement.to %></td>
+      <td><%= involvement.hospital %></td>
+      <td><%= link_to 'Show', involvement %></td>
+      <td><%= link_to 'Edit', edit_involvement_path(involvement) %></td>
+      <td><%= link_to 'Destroy', involvement, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101073641) do
+ActiveRecord::Schema.define(:version => 20130101074745) do
 
   create_table "departments", :force => true do |t|
     t.string   "name"
@@ -33,5 +33,17 @@ ActiveRecord::Schema.define(:version => 20130101073641) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "involvements", :force => true do |t|
+    t.boolean  "allow_appointment", :default => false
+    t.float    "price",             :default => 0.0
+    t.time     "from"
+    t.time     "to"
+    t.integer  "hospital_id"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
+  add_index "involvements", ["hospital_id"], :name => "index_involvements_on_hospital_id"
 
 end
