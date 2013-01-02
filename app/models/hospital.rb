@@ -6,4 +6,5 @@ class Hospital < ActiveRecord::Base
   validates_length_of :phone1, :phone2, :in => 6..7, :allow_nil => true
 
   has_many :departments
+  has_many :involvements
 end

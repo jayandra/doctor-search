@@ -13,5 +13,6 @@ describe Hospital do
   it { should ensure_length_of(:phone2).is_at_least(6).is_at_most(7) }
 
   it { should have_many (:departments)}
+  it { should have_many (:involvements)}
 
 end

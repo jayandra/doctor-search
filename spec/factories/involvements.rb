@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :involvement do
-    allow_appointment false
+    allow_appointment true
     price 1.5
-    from "2012-12-31 23:47:45"
-    to "2012-12-31 23:47:45"
-    hospital nil
+    from {Time.now}
+    to {Time.now+8.hours}
+    hospital
   end
 end
