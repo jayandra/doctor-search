@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :department do
-    name "MyString"
-    hospital nil
+    name "department_name"
+    
+    hospital
   end
 end

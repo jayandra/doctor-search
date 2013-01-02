@@ -6,6 +6,7 @@ FactoryGirl.define do
     price 1.5
     from {Time.now}
     to {Time.now+8.hours}
+    
     hospital
   end
 end
