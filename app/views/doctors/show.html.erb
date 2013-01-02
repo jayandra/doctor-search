@@ -1,0 +1,44 @@
+<div class="page-header">
+  <%= link_to doctors_path, :class => 'btn' do %>
+    <i class="icon-list-alt"></i>
+    Back
+  <% end %>
+  <%= link_to edit_doctor_path(@doctor), :class => 'btn btn-primary' do %>
+    <i class="icon-pencil icon-white"></i>
+    Edit
+  <% end %>
+  <h1>Listing doctors</h1>
+</div>
+
+<dl>
+  <dt>Checkup time:</dt>
+  <dd><%= @doctor.checkup_time %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @doctor.email %></dd>
+
+  <dt>Message:</dt>
+  <dd><%= @doctor.message %></dd>
+
+  <dt>Mobile1:</dt>
+  <dd><%= @doctor.mobile1 %></dd>
+
+  <dt>Mobile2:</dt>
+  <dd><%= @doctor.mobile2 %></dd>
+
+  <dt>Phone1:</dt>
+  <dd><%= @doctor.phone1 %></dd>
+
+  <dt>Phone2:</dt>
+  <dd><%= @doctor.phone2 %></dd>
+
+  <dt>Primary involvement:</dt>
+  <dd><%= @doctor.primary_involvement %></dd>
+
+  <dt>Name:</dt>
+  <dd><%= @doctor.name %></dd>
+
+  <dt>Department:</dt>
+  <dd><%= @doctor.department %></dd>
+
+</dl>

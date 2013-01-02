@@ -1,0 +1,47 @@
+<div class="page-header">
+  <%= link_to new_doctor_path, :class => 'btn btn-primary' do %>
+    <i class="icon-plus icon-white"></i>
+    New Doctor
+  <% end %>
+  <h1>Listing doctors</h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Checkup time</th>
+      <th>Email</th>
+      <th>Message</th>
+      <th>Mobile1</th>
+      <th>Mobile2</th>
+      <th>Phone1</th>
+      <th>Phone2</th>
+      <th>Primary involvement</th>
+      <th>Name</th>
+      <th>Department</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @doctors.each do |doctor| %>
+    <tr>
+      <td><%= doctor.checkup_time %></td>
+      <td><%= doctor.email %></td>
+      <td><%= doctor.message %></td>
+      <td><%= doctor.mobile1 %></td>
+      <td><%= doctor.mobile2 %></td>
+      <td><%= doctor.phone1 %></td>
+      <td><%= doctor.phone2 %></td>
+      <td><%= doctor.primary_involvement %></td>
+      <td><%= doctor.name %></td>
+      <td><%= doctor.department %></td>
+      <td><%= link_to 'Show', doctor %></td>
+      <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
+      <td><%= link_to 'Destroy', doctor, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
