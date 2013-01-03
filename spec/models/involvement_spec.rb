@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Involvement do
   it{ should belong_to (:hospital) }
   it{ should validate_presence_of (:hospital_id) }
+  it{ should belong_to (:doctor) }
+  it{ should validate_presence_of (:doctor_id) }
 
   describe "should validate 'from' and 'to' fields based on 'allow_appointment'" do
   	context "'allow_appointment' is true" do
@@ -39,5 +41,9 @@ describe Involvement do
   			expect { @involvement.save! }.to_not raise_error(ActiveRecord::RecordInvalid)
   		end
   	end
+  end
+
+  describe "#set_doctors_primary_hospital" do
+    pending "should set first hospital as doctors primary hospital"
   end
 end

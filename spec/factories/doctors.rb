@@ -3,14 +3,16 @@
 FactoryGirl.define do
   factory :doctor do
     checkup_time 1.5
-    email "MyString"
-    message "MyText"
-    mobile1 "MyString"
-    mobile2 "MyString"
-    phone1 "MyString"
-    phone2 "MyString"
-    primary_involvement 1
-    name "MyString"
-    department nil
+    sequence (:email) { |n| "person#{n}@example.com" }
+    message "doctor_message"
+    mobile1 1234567890
+    mobile2 9876543210
+    phone1 123456
+    phone2 1234567
+    name "doctor_name"
+
+    department
+
+    # primary_involvement   #first involvement created is assigned as primary unless other is selected
   end
 end
