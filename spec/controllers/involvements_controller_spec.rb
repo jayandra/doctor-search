@@ -23,8 +23,11 @@ describe InvolvementsController do
   # This should return the minimal set of attributes required to create a valid
   # Involvement. As you add validations to Involvement, be sure to
   # update the return value of this method accordingly.
+  before do
+    @inv = create(:involvement)
+  end
   def valid_attributes
-    { "allow_appointment" => "false" }
+    { :hospital_id => @inv.hospital_id, :doctor_id => @inv.doctor_id }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -38,7 +41,7 @@ describe InvolvementsController do
     it "assigns all involvements as @involvements" do
       involvement = Involvement.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:involvements).should eq([involvement])
+      assigns(:involvements).should eq([@inv,involvement])
     end
   end
 

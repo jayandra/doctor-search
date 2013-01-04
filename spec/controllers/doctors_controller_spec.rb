@@ -24,7 +24,7 @@ describe DoctorsController do
   # Doctor. As you add validations to Doctor, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "checkup_time" => "1.5" }
+    { "name" => "doctor_name", :department_id => 1 }
   end
 
   # This should return the minimal set of values that should be in the session

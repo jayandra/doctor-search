@@ -24,7 +24,7 @@ describe HospitalsController do
   # Hospital. As you add validations to Hospital, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "name" => "MyString" }
+    { :name => "Hospital name", :address => "hospital address", :city => "hospital city", :phone1 => "123456" }
   end
 
   # This should return the minimal set of values that should be in the session
