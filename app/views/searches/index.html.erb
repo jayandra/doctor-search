@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to new_search_path, :class => 'btn btn-primary' do %>
+    <i class="icon-plus icon-white"></i>
+    New Search
+  <% end %>
+  <h1>Listing searches</h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Doctor</th>
+      <th>Department</th>
+      <th>Hospital</th>
+      <th>Search template</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @searches.each do |search| %>
+    <tr>
+      <td><%= search.doctor %></td>
+      <td><%= search.department %></td>
+      <td><%= search.hospital %></td>
+      <td><%= search.search_template %></td>
+      <td><%= link_to 'Show', search %></td>
+      <td><%= link_to 'Edit', edit_search_path(search) %></td>
+      <td><%= link_to 'Destroy', search, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
