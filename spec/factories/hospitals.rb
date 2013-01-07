@@ -1,8 +1,10 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
-
+def rand_hospital_name
+    "hospital - "+Faker::Name.name
+end
 FactoryGirl.define do
   factory :hospital do
-    name "hospital_name"
+    name {rand_hospital_name}
     address "address_name"
     city "city_name"
     phone1 1234567

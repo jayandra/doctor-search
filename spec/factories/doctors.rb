@@ -1,7 +1,10 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
+def rand_doctor_name
+    "doctor - "+Faker::Name.name
+end
 
 FactoryGirl.define do
-  factory :doctor do
+  factory :doctor do            #It creates all doctor hospital and department
     checkup_time 1.5
     sequence (:email) { |n| "person#{n}@example.com" }
     message "doctor_message"
@@ -9,7 +12,7 @@ FactoryGirl.define do
     mobile2 9876543210
     phone1 123456
     phone2 1234567
-    name "doctor_name"
+    name {rand_doctor_name}
 
     department
 
