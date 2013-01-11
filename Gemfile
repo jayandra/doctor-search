@@ -1,12 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
-
+# gem 'sqlite3', :group => [:development, :test]
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -49,6 +47,7 @@ gem 'simple_form'
 gem 'country_select'
 gem 'hirb'
 gem 'pry-debugger'
+gem 'heroku'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
