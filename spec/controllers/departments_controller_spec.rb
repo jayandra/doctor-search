@@ -24,7 +24,7 @@ describe DepartmentsController do
   # Department. As you add validations to Department, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "name" => "department_name", "hospital_id" => 1 }
+    { "name" => "department_name"}
   end
 
   # This should return the minimal set of values that should be in the session
