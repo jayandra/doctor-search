@@ -41,6 +41,7 @@ class SearchesController < ApplicationController
   # POST /searches.json
   def create
     @search = Search.new(params[:search])
+    @search.search_template = Search.set_search_template(params)
 
     respond_to do |format|
       if @search.save
