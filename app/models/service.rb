@@ -1,5 +1,5 @@
 class Service < ActiveRecord::Base
-  attr_accessible :department, :hospital
+  attr_accessible :department_id, :hospital_id
 
   belongs_to :hospital
   belongs_to :department

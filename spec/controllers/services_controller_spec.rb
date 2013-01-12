@@ -24,7 +24,7 @@ describe ServicesController do
   # Service. As you add validations to Service, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "hospital" => "" }
+    { :hospital_id => 1, :department_id => 1 }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe ServicesController do
       it "assigns a newly created but unsaved service as @service" do
         # Trigger the behavior that occurs when invalid params are submitted
         Service.any_instance.stub(:save).and_return(false)
-        post :create, {:service => { "hospital" => "invalid value" }}, valid_session
+        post :create, {:service => { "hospital_id" => "invalid value" }}, valid_session
         assigns(:service).should be_a_new(Service)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Service.any_instance.stub(:save).and_return(false)
-        post :create, {:service => { "hospital" => "invalid value" }}, valid_session
+        post :create, {:service => { "hospital_id" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -132,7 +132,7 @@ describe ServicesController do
         service = Service.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Service.any_instance.stub(:save).and_return(false)
-        put :update, {:id => service.to_param, :service => { "hospital" => "invalid value" }}, valid_session
+        put :update, {:id => service.to_param, :service => { "hospital_id" => "invalid value" }}, valid_session
         assigns(:service).should eq(service)
       end
 
@@ -140,7 +140,7 @@ describe ServicesController do
         service = Service.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Service.any_instance.stub(:save).and_return(false)
-        put :update, {:id => service.to_param, :service => { "hospital" => "invalid value" }}, valid_session
+        put :update, {:id => service.to_param, :service => { "hospital_id" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
