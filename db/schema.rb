@@ -11,16 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105210244) do
+ActiveRecord::Schema.define(:version => 20130107220633) do
 
   create_table "departments", :force => true do |t|
     t.string   "name"
-    t.integer  "hospital_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "departments", ["hospital_id"], :name => "index_departments_on_hospital_id"
 
   create_table "doctors", :force => true do |t|
     t.float    "checkup_time",        :default => 0.5
@@ -73,5 +70,15 @@ ActiveRecord::Schema.define(:version => 20130105210244) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "services", :force => true do |t|
+    t.integer  "hospital_id"
+    t.integer  "department_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "services", ["department_id"], :name => "index_services_on_department_id"
+  add_index "services", ["hospital_id"], :name => "index_services_on_hospital_id"
 
 end

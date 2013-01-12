@@ -6,7 +6,5 @@ end
 FactoryGirl.define do
   factory :department do
     name { rand_department_name }
-    
-    hospital
   end
 end

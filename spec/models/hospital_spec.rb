@@ -12,9 +12,10 @@ describe Hospital do
   it { should ensure_length_of(:phone1).is_at_least(6).is_at_most(7) }
   it { should ensure_length_of(:phone2).is_at_least(6).is_at_most(7) }
 
-  it { should have_many(:departments).dependent(:destroy)}
+  it { should have_many(:services).dependent(:destroy)}
+  it { should have_many(:departments).through(:services).dependent(:destroy)}
   it { should have_many(:involvements).dependent(:destroy)}
-  it { should have_many(:doctors).through(:involvements)}
+  it { should have_many(:doctors).through(:involvements).dependent(:destroy)}
 
   describe "#doctors" do
     it "should assign multiple (here 2) doctors" do

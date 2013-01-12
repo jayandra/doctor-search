@@ -1,0 +1,20 @@
+<div class="page-header">
+  <%= link_to services_path, :class => 'btn' do %>
+    <i class="icon-list-alt"></i>
+    Back
+  <% end %>
+  <%= link_to edit_service_path(@service), :class => 'btn btn-primary' do %>
+    <i class="icon-pencil icon-white"></i>
+    Edit
+  <% end %>
+  <h1>Listing services</h1>
+</div>
+
+<dl>
+  <dt>Hospital:</dt>
+  <dd><%= @service.hospital %></dd>
+
+  <dt>Department:</dt>
+  <dd><%= @service.department %></dd>
+
+</dl>

@@ -15,7 +15,8 @@ describe Doctor do
   it { should ensure_length_of(:mobile2).is_equal_to(10) }
 
   it { should have_many(:involvements).dependent(:destroy)}
-  it { should have_many(:hospitals).through(:involvements)}
+  it { should have_many(:hospitals).through(:involvements).dependent(:destroy)}
+  it { should belong_to(:department) }
 
   describe "#hospitals" do
     it "should assign multiple (here 2) hospitals" do

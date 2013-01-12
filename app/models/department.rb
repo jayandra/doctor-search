@@ -1,7 +1,9 @@
 class Department < ActiveRecord::Base
-  attr_accessible :name, :hospital_id
+  attr_accessible :name
 
-  belongs_to :hospital
+  has_many :doctors
+  has_many :services, :dependent => :destroy
+  has_many :hospitals, :through => :services, :dependent => :destroy
   
-  validates_presence_of :name, :hospital_id
+  validates_presence_of :name
 end

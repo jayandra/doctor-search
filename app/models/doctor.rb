@@ -3,7 +3,7 @@ class Doctor < ActiveRecord::Base
 
   belongs_to :department
   has_many :involvements, :dependent => :destroy
-  has_many :hospitals, :through => :involvements
+  has_many :hospitals, :through => :involvements, :dependent => :destroy
 
   validates_presence_of :name, :department_id
   validates_numericality_of :phone1, :only_integer => true, :allow_nil => true
