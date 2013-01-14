@@ -10,7 +10,7 @@
   <h1>Listing hospitals</h1>
 </div>
 
-<dl>
+<dl class="show_page">
   <dt>Name:</dt>
   <dd><%= @hospital.name %></dd>
 
@@ -31,5 +31,10 @@
 
   <dt>Description:</dt>
   <dd><%= @hospital.description %></dd>
+
+  <dt>Departments:</dt>
+  <% @hospital.departments.each do |dep| %>
+    <dd><%= dep.name %></dd>
+  <% end %>
 
 </dl>

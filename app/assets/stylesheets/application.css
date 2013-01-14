@@ -18,3 +18,10 @@
     background-color: #3EA76E;
     border-radius: 6px 6px 6px 6px;
 }
+dl.show_page dt{
+	float : left;
+	min-width : 125px;
+}
+dl.show_page dd{
+	margin-left : 175px;
+}

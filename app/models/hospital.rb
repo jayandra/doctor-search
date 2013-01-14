@@ -1,5 +1,5 @@
 class Hospital < ActiveRecord::Base
-  attr_accessible :address, :city, :description, :image, :name, :phone1, :phone2
+  attr_accessible :address, :city, :description, :image, :name, :phone1, :phone2, :department_ids
 
   validates_presence_of :name, :address, :city, :phone1
   validates_numericality_of :phone1, :only_integer => true

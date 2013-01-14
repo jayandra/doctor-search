@@ -3,5 +3,5 @@ class Service < ActiveRecord::Base
 
   belongs_to :hospital
   belongs_to :department
-  validates_presence_of :hospital_id, :department_id
+  # validates_presence_of :hospital_id, :department_id
 end

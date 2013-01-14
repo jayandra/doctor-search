@@ -13,7 +13,7 @@ class HospitalsController < ApplicationController
   # GET /hospitals/1
   # GET /hospitals/1.json
   def show
-    @hospital = Hospital.find(params[:id])
+    @hospital = Hospital.includes(:departments).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
