@@ -10,7 +10,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Hospital</th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,7 +20,6 @@
 <% @departments.each do |department| %>
     <tr>
       <td><%= department.name %></td>
-      <td><%= department.hospital %></td>
       <td><%= link_to 'Show', department %></td>
       <td><%= link_to 'Edit', edit_department_path(department) %></td>
       <td><%= link_to 'Destroy', department, confirm: 'Are you sure?', method: :delete %></td>

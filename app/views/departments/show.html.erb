@@ -10,11 +10,12 @@
   <h1>Listing departments</h1>
 </div>
 
-<dl>
+<dl class="show_page">
   <dt>Name:</dt>
   <dd><%= @department.name %></dd>
 
-  <dt>Hospital:</dt>
-  <dd><%= @department.hospital %></dd>
-
+  <dt>Hospitals:</dt>
+  <% @department.hospitals.each do |h| %>
+    <dd><%= h.name %></dd>
+  <% end %>
 </dl>

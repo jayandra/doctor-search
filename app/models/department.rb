@@ -1,5 +1,5 @@
 class Department < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :hospital_ids
 
   has_many :doctors
   has_many :services, :dependent => :destroy

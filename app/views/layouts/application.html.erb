@@ -29,7 +29,7 @@
         <div class="nav-collapse">
           <ul class="nav">
             <%= content_tag(:li, (link_to "Hospitals", hospitals_path), :class => active_link('hospitals') ) %>
-            <li><a href="#about">Specialities</a></li>
+            <%= content_tag(:li, (link_to "Specialities", departments_path), :class => active_link('departments') ) %>
             <li><a href="#about">Profile</a></li>
             <li><a href="#contact">About</a></li>
             <li><a href="#contact">Contact</a></li>
