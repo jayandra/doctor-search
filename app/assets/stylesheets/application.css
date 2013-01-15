@@ -18,6 +18,17 @@
     background-color: #3EA76E;
     border-radius: 6px 6px 6px 6px;
 }
+.gb_padding{
+	background-color: #3EA76E;
+    border-radius: 6px 6px 6px 6px;
+    padding: 10px;
+}
+.grey_block a{
+	color: #fff;
+}
+.gb_padding .form_last_field{
+	margin-bottom: 0px !important;
+}
 dl.show_page dt{
 	float : left;
 	min-width : 125px;
