@@ -25,3 +25,7 @@ dl.show_page dt{
 dl.show_page dd{
 	margin-left : 175px;
 }
+dl.show_page dd:after {
+	content:' ';
+	white-space:pre;
+}
