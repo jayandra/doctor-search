@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "F: searching" do
+feature "F: searching" do
 	before do
 		@d1 = FactoryGirl.create(:doctor)
 		@d2 = FactoryGirl.create(:doctor)
@@ -10,15 +10,17 @@ describe "F: searching" do
 		visit root_path
 	end
 
-	context "searching of doctor" do
-		it "should give correct values for docter search" do
-			
-		end
+	scenario "searching of doctor" do
+		fill_in "search_doctor", :with => @d1.name
+		click_button "Get Results"
+		current_url.should == search_url(:id => 1)
+		page.should have_content @d1.name
+		page.should_not have_content @d2.name
 	end
-	context "searching of department" do
+	scenario "searching of department" do
 
 	end
-	context "searching of hospital" do
+	scenario "searching of hospital" do
 
 	end
 end

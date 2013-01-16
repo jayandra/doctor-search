@@ -13,6 +13,8 @@ class Doctor < ActiveRecord::Base
   validates_numericality_of :mobile2, :only_integer => true, :allow_nil => true
   validates_length_of :mobile1, :mobile2, :is => 10, :allow_nil => true
 
+  scope :doc_like, lambda{|d| where(["doctors.name LIKE ?", "%#{d}%"])}
+
   def primary_hospital
     self.hospitals.find_by_id(primary_involvement)
   end

@@ -14,6 +14,7 @@ class SearchesController < ApplicationController
   # GET /searches/1.json
   def show
     @search = Search.find(params[:id])
+    @search_results = @search.send("find_#{@search.search_template}")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,7 +46,7 @@ class SearchesController < ApplicationController
 
     respond_to do |format|
       if @search.save
-        format.html { redirect_to @search, notice: 'Search was successfully created.' }
+        format.html { redirect_to @search }
         format.json { render json: @search, status: :created, location: @search }
       else
         format.html { render action: "new" }

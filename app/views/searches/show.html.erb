@@ -1,26 +1,16 @@
-<div class="page-header">
-  <%= link_to searches_path, :class => 'btn' do %>
-    <i class="icon-list-alt"></i>
-    Back
-  <% end %>
-  <%= link_to edit_search_path(@search), :class => 'btn btn-primary' do %>
-    <i class="icon-pencil icon-white"></i>
-    Edit
-  <% end %>
-  <h1>Listing searches</h1>
+<%= render 'search_block' %>
+
+<div id = "result_block" class="green_block">
+  <div class="row">
+    <div class="span12">
+      <h4>Search Results for:
+        <%= @search.doctor if @search.doctor.present? %>
+        <%= " " + @search.department if @search.department.present? %>
+        <%= " " + @search.hospital if @search.hospital.present? %>
+      </h4>
+    </div>
+
+    <%= render :partial => "#{@search.search_template}_template", :collection => @search_results %>
+
+  </div>
 </div>
-
-<dl>
-  <dt>Doctor:</dt>
-  <dd><%= @search.doctor %></dd>
-
-  <dt>Department:</dt>
-  <dd><%= @search.department %></dd>
-
-  <dt>Hospital:</dt>
-  <dd><%= @search.hospital %></dd>
-
-  <dt>Search template:</dt>
-  <dd><%= @search.search_template %></dd>
-
-</dl>

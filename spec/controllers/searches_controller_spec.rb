@@ -47,6 +47,7 @@ describe SearchesController do
       search = Search.create! valid_attributes
       get :show, {:id => search.to_param}, valid_session
       assigns(:search).should eq(search)
+      assigns(:search_results)
     end
   end
 

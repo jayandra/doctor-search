@@ -1,13 +1,13 @@
-<div id = "search_block" class="grey_block">
-<div class = "row">
-  <%= simple_form_for (Search.new), :defaults => {
-            :label => false,
-            :wrapper_html => { :class => 'span3' },
-            } do |f| %>
-  <%= f.input :doctor, :placeholder=>"   Doctor's Name" %>
-  <%= f.input :department, :placeholder=>"   Department's Name" %>
-  <%= f.input :hospital, :placeholder=>"   Hospital's Name" %>
-  <%= f.button :submit, 'Get Results'%>
-  <% end %>
- </div>
+<div id = "search_block" class="green_block">
+	<div class = "row">
+		<%= simple_form_for (Search.new), :defaults => {
+			:label => false,
+			:wrapper_html => { :class => 'span3' },
+		} do |f| %>
+		<%= f.input :doctor, :placeholder=>"   Doctor's Name" %>
+		<%= f.input :department, :placeholder=>"   Department's Name" %>
+		<%= f.input :hospital, :placeholder=>"   Hospital's Name" %>
+		<%= f.button :submit, 'Get Results'%>
+		<% end %>
+	</div>
 </div>

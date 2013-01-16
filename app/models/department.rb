@@ -6,4 +6,6 @@ class Department < ActiveRecord::Base
   has_many :hospitals, :through => :services, :dependent => :destroy
   
   validates_presence_of :name
+
+  scope :dep_like, lambda{|de| where("departments.name LIKE ?", "%#{de}%")}
 end
