@@ -8,4 +8,5 @@ class Department < ActiveRecord::Base
   validates_presence_of :name
 
   scope :dep_like, lambda{|de| where("departments.name LIKE ?", "%#{de}%")}
+  scope :hos_like, lambda{|h| where(["hospitals.name LIKE ?", "%#{h}%"])}
 end

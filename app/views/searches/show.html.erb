@@ -10,7 +10,9 @@
       </h4>
     </div>
 
-    <%= render :partial => "#{@search.search_template}_template", :collection => @search_results %>
-
+    <div id="results">
+      <%= render :partial => "#{@search.search_template}_template", :collection => @search_results %>
+    </div>
+    
   </div>
 </div>

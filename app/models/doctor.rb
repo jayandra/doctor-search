@@ -14,6 +14,8 @@ class Doctor < ActiveRecord::Base
   validates_length_of :mobile1, :mobile2, :is => 10, :allow_nil => true
 
   scope :doc_like, lambda{|d| where(["doctors.name LIKE ?", "%#{d}%"])}
+  scope :dep_like, lambda{|de| where("departments.name LIKE ?", "%#{de}%")}
+  scope :hos_like, lambda{|h| where(["hospitals.name LIKE ?", "%#{h}%"])}
 
   def primary_hospital
     self.hospitals.find_by_id(primary_involvement)

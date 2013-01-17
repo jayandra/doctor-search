@@ -18,17 +18,17 @@ class Search < ActiveRecord::Base
 
 	def find_doctors
 		doctors = Doctor.scoped.order("doctors.name")
-		doctors.doc_like(doctor) if doctor.present?
-		doctors.dep_like(department) if department.present?
-		doctors.hos_like(hospital) if hospital.present?
+		doctors = doctors.doc_like(doctor) if doctor.present?
+		doctors = doctors.joins(:department).dep_like(department) if department.present?
+		doctors = doctors.joins(:hospitals).hos_like(hospital) if hospital.present?
 		
 		doctors
 	end
 
 	def find_departments
 		departments = Department.scoped.order(:name)
-		departments.dep_like(department) if department.present?
-		departments.hos_like(hospital) if hospital.present?
+		departments = departments.dep_like(department) if department.present?
+		departments = departments.joins(:hospitals).hos_like(hospital) if hospital.present?
 	    
 	    departments
 	end
