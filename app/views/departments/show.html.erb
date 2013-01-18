@@ -18,4 +18,5 @@
   <% @department.hospitals.each do |h| %>
     <dd><%= h.name %></dd>
   <% end %>
+  <%=raw "<dd></dd>" if @department.hospitals.empty? %>
 </dl>
