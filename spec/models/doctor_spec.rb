@@ -23,30 +23,78 @@ describe Doctor do
       @doctor = create(:doctor)
       @h1 = @doctor.hospitals.create( attributes_for(:hospital) )
       @h2 = @doctor.hospitals.create( attributes_for(:hospital) )
-      @doctor.hospitals.should eq( [@h1,@h2] )
+      @doctor.hospitals.should include(@h1,@h2)
       # expect { @doctor.hospitals }.to eq( [@h1,@h2] )
     end
   end
 
   describe "#primary_hospital" do
-    context "when hospital is not assigned" do
-      it "should set first hospital for involvement" do
-        @doctor = create(:doctor)
-        @h1 = @doctor.hospitals.create( attributes_for(:hospital) )
-        @h2 = @doctor.hospitals.create( attributes_for(:hospital) )
-        Doctor.find(@doctor).primary_hospital.should eq(@h1)
+      it "should get primary_hospital" do
+        @hos1 = create(:hospital)
+        @dep1 = @hos1.departments.create( attributes_for(:department) )
+        @dep2 = @hos1.departments.create( attributes_for(:department) )
+        @hos2 = create(:hospital)
+        @doctor = @hos1.doctors.create( attributes_for(:doctor).merge(:department_id => @dep2.id, :primary_involvement => @hos1.id) )
+        Doctor.find(@doctor).primary_hospital.should eq(@hos1)
       end
+  end
+  describe "#primary_hospital=" do
+      it "should set primary_hospital" do
+        @hos1 = create(:hospital)
+        @dep1 = @hos1.departments.create( attributes_for(:department) )
+        @dep2 = @hos1.departments.create( attributes_for(:department) )
+        @doctor = @hos1.doctors.create( attributes_for(:doctor).merge(:department_id => @dep2.id, :primary_involvement => @hos1.id) )
+        
+        @hos2 = @dep2.hospitals.create( attributes_for(:hospital) )
+        Doctor.find(@doctor).primary_hospital.should eq(@hos1)
+        Doctor.find(@doctor).primary_hospital=(@hos2)
+        Doctor.find(@doctor).primary_hospital.should eq(@hos2)
+      end
+  end
+
+  describe "#check_hospital" do
+    before do
+      @hos1 = create(:hospital)
+      @dep1 = @hos1.departments.create( attributes_for(:department) )
+      @dep2 = @hos1.departments.create( attributes_for(:department) )
+      @hos2 = create(:hospital)
+      @dep2_1 = @hos2.departments.create( attributes_for(:department) )
+      @dep2_2 = @hos2.departments.create( attributes_for(:department) )
     end
-    context "when hospital is assigned" do
-      it "should set assigned hospital for involvement" do
-        @doctor = create(:doctor)
-        @h1 = @doctor.hospitals.create( attributes_for(:hospital) )
-        @h2 = @doctor.hospitals.create( attributes_for(:hospital) )
-        @h3 = @doctor.hospitals.create( attributes_for(:hospital) )
-        # @doctor.involvement.should eq(@h1)
-        @doctor.primary_hospital=(@h3)
-        @doctor.primary_hospital.should eq(@h3)
-      end
+
+    it "should save doctor when hospital includes assigned department" do
+      @doc1 = @hos1.doctors.create( attributes_for(:doctor).merge(:department_id => @dep2.id) )
+      expect{ @doc1.save! }.to_not raise_error
+    end
+    it "should not save doctor when hospital does not include assigned department" do
+      @doc1 = Doctor.new( attributes_for(:doctor).merge(:department_id => @dep2_1.id, :primary_involvement => @hos1.id) )
+      @doc1.involvements.build( attributes_for(:involvement).merge(:hospital_id => @hos1.id) )
+      expect{ @doc1.save! }.to raise_error
+    end
+  end
+
+  describe "#check_hospital - uniqueness of involvements" do
+    before do
+      @dep1 = create(:department)
+      @hos1 = @dep1.hospitals.create( attributes_for(:hospital) )
+      @hos2 = @dep1.hospitals.create( attributes_for(:hospital) )
+      @hos3 = @dep1.hospitals.create( attributes_for(:hospital) )
+    end
+
+    it " should save doctor when involvements in hospitals are unique" do
+      @doc1 = Doctor.new( attributes_for(:doctor).merge(:department_id => @dep1.id, :primary_involvement => @hos1.id) )
+      @doc1.involvements.build( attributes_for(:involvement).merge(:hospital_id => @hos1.id) )
+      @doc1.involvements.build( attributes_for(:involvement).merge(:hospital_id => @hos2.id) )
+      @doc1.involvements.build( attributes_for(:involvement).merge(:hospital_id => @hos3.id) )
+      expect{ @doc1.save! }.to_not raise_error
+    end
+
+    it " should not save doctor when involvements in hospitals are not unique" do
+      @doc1 = Doctor.new( attributes_for(:doctor).merge(:department_id => @dep1.id, :primary_involvement => @hos1.id) )
+      @doc1.involvements.build( attributes_for(:involvement).merge(:hospital_id => @hos1.id) )
+      @doc1.involvements.build( attributes_for(:involvement).merge(:hospital_id => @hos2.id) )
+      @doc1.involvements.build( attributes_for(:involvement).merge(:hospital_id => @hos1.id) )
+      expect{ @doc1.save! }.to raise_error
     end
   end
 end

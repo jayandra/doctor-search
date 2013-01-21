@@ -7,7 +7,7 @@ FactoryGirl.define do
     from {Time.now}
     to {Time.now+8.hours}
     
-    hospital
-    doctor
+    # hospital
+    # doctor
   end
 end

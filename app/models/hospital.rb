@@ -3,8 +3,8 @@ class Hospital < ActiveRecord::Base
 
   validates_presence_of :name, :address, :city, :phone1
   validates_numericality_of :phone1, :only_integer => true
-  validates_numericality_of :phone2, :only_integer => true, :allow_nil => true
-  validates_length_of :phone1, :phone2, :in => 6..7, :allow_nil => true
+  validates_numericality_of :phone2, :only_integer => true, :allow_blank => true
+  validates_length_of :phone1, :phone2, :in => 6..7, :allow_blank => true
 
   has_many :services, :dependent => :destroy
   has_many :departments, :through => :services, :dependent => :destroy

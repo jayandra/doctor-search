@@ -1,0 +1,13 @@
+<div class = "involvement_list">
+  <%= f.input :hospital_id, :collection => Department.order(:name), :as => :grouped_select, 
+  :group_method => :hospitals, :group_label_method => :name, 
+  :label_method => :name, :value_method => :id,
+  :include_blank => false, :wrapper_html => { :class => "inline hospital_list" }
+  %>
+  <%#= f.input :allow_appointment %>
+  <%#= f.input :price %>
+  <%= f.input :from, :wrapper_html => { :class => "inline not_first" } %>
+  <%= f.input :to, :wrapper_html => { :class => "inline not_first" } %>
+  <%= f.hidden_field :_destroy, :class => "_destroy_involvement" %>
+  <%= link_to "remove", "#", :class => "remove_involvement" %>
+</div>

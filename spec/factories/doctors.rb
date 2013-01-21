@@ -14,7 +14,15 @@ FactoryGirl.define do
     phone2 1234567
     name {rand_doctor_name}
 
-    department
+    after(:build) do |doc|
+        dep = FactoryGirl.create(:department)
+        hos1 = dep.hospitals.create(attributes_for(:hospital))
+        hos2 = dep.hospitals.create(attributes_for(:hospital))
+        doc.department_id = dep.id
+        doc.involvements.build( attributes_for(:involvement).merge({:hospital_id => hos1.id}) )
+        doc.involvements.build( attributes_for(:involvement).merge({:hospital_id => hos2.id}) )
+        doc.primary_involvement = hos1.id
+    end
 
     # primary_involvement   #first involvement created is assigned as primary unless other is selected
   end

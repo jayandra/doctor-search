@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Involvement do
   it{ should belong_to (:hospital) }
-  it{ should validate_presence_of (:hospital_id) }
+  # it{ should validate_presence_of (:hospital_id) }
   it{ should belong_to (:doctor) }
-  it{ should validate_presence_of (:doctor_id) }
+  # it{ should validate_presence_of (:doctor_id) }
 
   describe "should validate 'from' and 'to' fields based on 'allow_appointment'" do
   	context "'allow_appointment' is true" do

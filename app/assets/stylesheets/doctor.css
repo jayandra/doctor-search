@@ -1,0 +1,22 @@
+.involvement_list{
+	margin-left: 110px;
+}
+
+.not_first label{
+	width: 65px !important;
+}
+.not_first .controls{
+	margin-left: 75px;
+	width: 225px;
+}
+.not_first{
+	margin-left: 0px !important;
+}
+
+.involvement_list .control-group{
+	margin-left: -110px;
+
+}
+.involvement_list select.time{
+	width: 100px;
+}

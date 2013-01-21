@@ -40,3 +40,9 @@ dl.show_page dd:after {
 	content:' ';
 	white-space:pre;
 }
+.inline{
+	display: inline-block;
+}
+.right{
+	float: right;
+}
