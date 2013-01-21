@@ -6,11 +6,12 @@
 
   <%= f.error_notification %>
 
+<div class="gb_padding">
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.association :department, :include_blank => false, :wrapper_html => { :class => "inline" } %>
-    <%= link_to_add_fields "Add Hospitals", f, :involvements %>
 
+    <%= link_to_add_fields "Add Hospital", f, :involvements %>
     <div id="multiple_involvements">
       <%= f.simple_fields_for :involvements do |invol| %>
         <%= render("involvements_fields", :f => invol) %>
@@ -23,9 +24,10 @@
     <%= f.input :phone2 %>
     <%= f.input :mobile1 %>
     <%= f.input :mobile2 %>
-    <%= f.input :checkup_time %>
-    <%= f.input :message %>
+    <%#= f.input :checkup_time %>
+    <%= f.input :message, :input_html => {:rows => 7}, :wrapper_html => {:class => "form_last_field"} %>
   </div>
+</div>
 
   <div class="form-actions">
     <%= f.button :submit, :class => "btn-primary" %>

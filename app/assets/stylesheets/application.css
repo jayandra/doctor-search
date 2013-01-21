@@ -23,8 +23,11 @@
     border-radius: 6px 6px 6px 6px;
     padding: 10px;
 }
-.green_block a{
+.green_block a, .gb_padding a{
 	color: #fff;
+}
+.green_block a.btn, .gb_padding a.btn{
+	color: #333;
 }
 .gb_padding .form_last_field{
 	margin-bottom: 0px !important;
@@ -35,6 +38,9 @@ dl.show_page dt{
 }
 dl.show_page dd{
 	margin-left : 175px;
+}
+dl.show_page dd div.span2{
+	margin-left : 0px;
 }
 dl.show_page dd:after {
 	content:' ';

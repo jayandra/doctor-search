@@ -10,7 +10,7 @@
   <h1>Listing doctors</h1>
 </div>
 
-<dl class="show_page">
+<dl class="show_page gb_padding">
   <dt>Name:</dt>
   <dd><%= @doctor.name %></dd>
 
@@ -19,6 +19,15 @@
 
   <dt>Primary involvement:</dt>
   <dd><%= @doctor.primary_hospital.name %></dd>
+
+  <dt>All involvements:</dt>
+  <% @doctor.involvements.each do |involvement| %>
+    <dd>
+      <div class = "span2"><%= involvement.hospital.name %></div>
+      <div class = "span2"><%= involvement.from.to_time.strftime("%I:%M %p") %></div>
+      <div class = "span2"><%= involvement.to.to_time.strftime("%I:%M %p") %></div>
+    </dd>
+  <% end %>
 
   <dt>Email:</dt>
   <dd><%= @doctor.email %></dd>
