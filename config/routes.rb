@@ -1,8 +1,8 @@
 DoctorSearch::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:sessions => 'sessions'}
   as :user do
-    get 'login' => 'devise/sessions#new', :as => :login
-    delete 'logout' => 'devise/sessions#destroy', :as => :logout
+    get 'login' => 'sessions#new', :as => :login
+    delete 'logout' => 'sessions#destroy', :as => :logout
     get 'register' => 'devise/registrations#new', :as => :register
   end
 

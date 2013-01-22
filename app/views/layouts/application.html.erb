@@ -46,9 +46,11 @@
   </div>
   <div class="container">
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, :class => "alert #{name == :error ? "alert-error" : "alert-success" }" do %>
-        <a class="close" data-dismiss="alert" href="#">×</a>
-        <%= msg %>
+      <% if [:notice, :alert, :error].include? name %>
+        <%= content_tag :div, :class => "alert #{name == :error ? "alert-error" : "alert-success" }" do %>
+          <a class="close" data-dismiss="alert" href="#">×</a>
+          <%= msg %>
+        <% end %>
       <% end %>
     <% end %>
     <%= yield %>
