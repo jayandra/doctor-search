@@ -70,5 +70,8 @@ module DoctorSearch
       # generate factories instead of fixtures, and to save them in the spec/factories directory
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
+
+    # forcing application to not access the DB or load models when precompiling your assets (from devise message).
+    config.assets.initialize_on_precompile = false
   end
 end
