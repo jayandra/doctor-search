@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122054409) do
+ActiveRecord::Schema.define(:version => 20130122214316) do
 
   create_table "departments", :force => true do |t|
     t.string   "name"
@@ -32,9 +32,11 @@ ActiveRecord::Schema.define(:version => 20130122054409) do
     t.integer  "department_id"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+    t.integer  "user_id"
   end
 
   add_index "doctors", ["department_id"], :name => "index_doctors_on_department_id"
+  add_index "doctors", ["user_id"], :name => "index_doctors_on_user_id"
 
   create_table "hospitals", :force => true do |t|
     t.string   "name"
@@ -46,7 +48,10 @@ ActiveRecord::Schema.define(:version => 20130122054409) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
   end
+
+  add_index "hospitals", ["user_id"], :name => "index_hospitals_on_user_id"
 
   create_table "involvements", :force => true do |t|
     t.boolean  "allow_appointment", :default => false

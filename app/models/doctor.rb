@@ -3,6 +3,7 @@ class Doctor < ActiveRecord::Base
                   :primary_involvement, :department_id, :involvements_attributes
 
   belongs_to :department
+  belongs_to :user
   has_many :involvements, :dependent => :destroy
   has_many :hospitals, :through => :involvements, :dependent => :destroy
 

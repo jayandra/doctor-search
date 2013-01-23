@@ -1,6 +1,8 @@
 class Hospital < ActiveRecord::Base
   attr_accessible :address, :city, :description, :image, :name, :phone1, :phone2, :department_ids
 
+  belongs_to :user
+  
   validates_presence_of :name, :address, :city, :phone1
   validates_numericality_of :phone1, :only_integer => true
   validates_numericality_of :phone2, :only_integer => true, :allow_blank => true
