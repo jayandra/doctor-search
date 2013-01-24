@@ -72,6 +72,6 @@ module DoctorSearch
     end
 
     # forcing application to not access the DB or load models when precompiling your assets (from devise message).
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
   end
 end
