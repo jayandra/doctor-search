@@ -3,7 +3,9 @@
 <div class="gb_padding">
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.association :hospitals, :wrapper_html => { :class => 'form_last_field' } %>
+    <% if current_user.try(:role) == AppVariables::SUPER_ADMIN %>
+    	<%= f.association :hospitals, :wrapper_html => { :class => 'form_last_field' } %>
+    <% end %>
   </div>
 </div>
 
