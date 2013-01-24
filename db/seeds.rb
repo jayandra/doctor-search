@@ -9,11 +9,13 @@ require 'rubygems'
 require 'faker'
 require 'factory_girl_rails'
 5.times do |i|	#creating doctor automatically creates hospital and depeartments
-	instance_variable_set("@service_#{i}", FactoryGirl.create(:service))
-	instance_variable_set("@involvement_#{i}", FactoryGirl.create(:involvement, :hospital => eval("@service_#{i}").hospital))
-	doc = eval("@involvement_#{i}").doctor
-	doc.department.destroy
-	doc.department = eval("@service_#{i}").department
-	doc.save!
-    # eval("@doctor_#{i}").hospitals << eval("@doctor_#{i}").department.hospital
+	d = FactoryGirl.create(:doctor)
+
+	dep1 = d.department
+	hos1 = d.hospitals.first
+	hos2 = d.hospitals.last
+	[d, dep1, hos1, hos2].each do |entry|
+		entry.name = entry.class.to_s+" - #{i+1}"
+		entry.save
+	end
 end
