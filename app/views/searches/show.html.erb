@@ -4,9 +4,9 @@
   <div class="row">
     <div class="span12">
       <h4>Search Results for:
-        <%= @search.doctor if @search.doctor.present? %>
-        <%= " " + @search.department if @search.department.present? %>
-        <%= " " + @search.hospital if @search.hospital.present? %>
+        <%= @search.doctor.present? ? " #{@search.doctor} | " : " - | " %>
+        <%= @search.department.present? ? "#{@search.department} | " : "- | " %>
+        <%= @search.hospital.present? ? "#{@search.hospital} | " : "-"  %>
       </h4>
     </div>
 
