@@ -1,7 +1,9 @@
 <div class="page-header">
-  <%= link_to new_hospital_path, :class => 'btn btn-primary' do %>
-    <i class="icon-plus icon-white"></i>
-    New Hospital
+  <% if can? :create, Hospital.new %>
+    <%= link_to new_hospital_path, :class => 'btn btn-primary' do %>
+      <i class="icon-plus icon-white"></i>
+      New Hospital
+    <% end %>
   <% end %>
   <h1>Listing hospitals</h1>
 </div>
@@ -14,8 +16,6 @@
       <th>City</th>
       <th>Phone1</th>
       <th>Phone2</th>
-      <th>Image</th>
-      <th>Description</th>
       <th></th>
       <th></th>
       <th></th>
@@ -30,11 +30,9 @@
       <td><%= hospital.city %></td>
       <td><%= hospital.phone1 %></td>
       <td><%= hospital.phone2 %></td>
-      <td><%= hospital.image %></td>
-      <td><%= hospital.description %></td>
       <td><%= link_to 'Show', hospital %></td>
-      <td><%= link_to 'Edit', edit_hospital_path(hospital) %></td>
-      <td><%= link_to 'Destroy', hospital, confirm: 'Are you sure?', method: :delete %></td>
+      <td><%= link_to 'Edit', edit_hospital_path(hospital) if can? :edit, hospital %></td>
+      <td><%= link_to 'Destroy', hospital, confirm: 'Are you sure?', method: :delete if can? :destroy, hospital %></td>
     </tr>
 <% end %>
   </tbody>

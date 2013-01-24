@@ -3,11 +3,13 @@
     <i class="icon-list-alt"></i>
     Back
   <% end %>
-  <%= link_to edit_doctor_path(@doctor), :class => 'btn btn-primary' do %>
-    <i class="icon-pencil icon-white"></i>
-    Edit
+  <% if can? :edit, @doctor %>
+    <%= link_to edit_doctor_path(@doctor), :class => 'btn btn-primary' do %>
+      <i class="icon-pencil icon-white"></i>
+      Edit
+    <% end %>
   <% end %>
-  <h1>Listing doctors</h1>
+  <h1>Doctor Detail</h1>
 </div>
 
 <dl class="show_page gb_padding">
@@ -15,15 +17,19 @@
   <dd><%= @doctor.name %></dd>
 
   <dt>Department:</dt>
-  <dd><%= @doctor.department.name %></dd>
+  <dd><%= link_to @doctor.department.name, department_path(@doctor.department) %></dd>
 
   <dt>Primary involvement:</dt>
-  <dd><%= @doctor.primary_hospital.name %></dd>
+  <dd><b><%= @doctor.primary_hospital.name %></b></dd>
 
   <dt>All involvements:</dt>
   <% @doctor.involvements.each do |involvement| %>
     <dd>
-      <div class = "span2"><%= involvement.hospital.name %></div>
+      <div class = "span2">
+        <%= link_to truncate(involvement.hospital.name, :length => 25, :omission => '..'),
+                    hospital_path(involvement.hospital)
+        %>
+      </div>
       <div class = "span2"><%= involvement.from.to_time.strftime("%I:%M %p") %></div>
       <div class = "span2"><%= involvement.to.to_time.strftime("%I:%M %p") %></div>
     </dd>

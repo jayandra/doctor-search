@@ -1,4 +1,5 @@
 class InvolvementsController < ApplicationController
+  load_and_authorize_resource
   # GET /involvements
   # GET /involvements.json
   def index

@@ -1,7 +1,9 @@
 <div class="page-header">
-  <%= link_to new_doctor_path, :class => 'btn btn-primary' do %>
-    <i class="icon-plus icon-white"></i>
-    New Doctor
+  <% if can? :create, Doctor.new %>
+    <%= link_to new_doctor_path, :class => 'btn btn-primary' do %>
+      <i class="icon-plus icon-white"></i>
+      New Doctor
+    <% end %>
   <% end %>
   <h1>Listing doctors</h1>
 </div>
@@ -15,7 +17,6 @@
       <th>Email</th>
       <th>Phone1</th>
       <th>Phone2</th>
-      
       <th></th>
       <th></th>
       <th></th>
@@ -23,7 +24,9 @@
   </thead>
 
   <tbody>
+
 <% @doctors.each do |doctor| %>
+  <% if doctor.present? %>
     <tr>
       <td><%= doctor.name %></td>
       <td><%= doctor.department.name %></td>
@@ -33,9 +36,13 @@
       <td><%= doctor.phone2 %></td>
       
       <td><%= link_to 'Show', doctor %></td>
-      <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
-      <td><%= link_to 'Destroy', doctor, confirm: 'Are you sure?', method: :delete %></td>
+      <td><%= link_to 'Edit', edit_doctor_path(doctor) if can? :edit, doctor%></td>
+      <td>
+        <%= link_to 'Destroy', doctor, confirm: 'Are you sure?', method: :delete if can? :destroy, doctor %>
+      </td>
     </tr>
+  <% end %>
 <% end %>
+
   </tbody>
 </table>

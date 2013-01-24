@@ -3,11 +3,13 @@
     <i class="icon-list-alt"></i>
     Back
   <% end %>
-  <%= link_to edit_department_path(@department), :class => 'btn btn-primary' do %>
-    <i class="icon-pencil icon-white"></i>
-    Edit
+  <% if can? :edit, @department %>
+    <%= link_to edit_department_path(@department), :class => 'btn btn-primary' do %>
+      <i class="icon-pencil icon-white"></i>
+      Edit
+    <% end %>
   <% end %>
-  <h1>Listing departments</h1>
+  <h1>Department Detail</h1>
 </div>
 
 <dl class="show_page gb_padding">
@@ -16,7 +18,19 @@
 
   <dt>Hospitals:</dt>
   <% @department.hospitals.each do |h| %>
-    <dd><%= h.name %></dd>
+    <dd><%= link_to h.name, hospital_path(h) %></dd>
   <% end %>
   <%=raw "<dd></dd>" if @department.hospitals.empty? %>
+
+  <dt>Doctors:</dt>
+  <dd>
+    <div style="display:inline-block">
+      <% @department.doctors.each do |doctor| %>
+        <div class = "span3">
+          <%= link_to truncate(doctor.name, :length=>30, :omission => '...'), doctor_path(doctor) %>
+        </div>
+      <% end %>
+    </div>
+  </dd>
+  <%=raw "<dd></dd>" if @department.doctors.empty? %>
 </dl>

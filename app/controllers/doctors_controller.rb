@@ -1,8 +1,12 @@
 class DoctorsController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /doctors
   # GET /doctors.json
   def index
-    @doctors = Doctor.all
+    @doctors = Doctor.all if current_user.try(:role) == 10
+    @doctors = current_user.hospital.doctors if current_user.try(:role) == 2
+    @doctors = [current_user.doctor] if current_user.try(:role) == 3
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +28,7 @@ class DoctorsController < ApplicationController
   # GET /doctors/new
   # GET /doctors/new.json
   def new
-    @doctor = Doctor.new
+    # @doctor = Doctor.new
     @doctor.involvements.build
 
     respond_to do |format|
@@ -35,13 +39,13 @@ class DoctorsController < ApplicationController
 
   # GET /doctors/1/edit
   def edit
-    @doctor = Doctor.find(params[:id])
+    # @doctor = Doctor.find(params[:id])
   end
 
   # POST /doctors
   # POST /doctors.json
   def create
-    @doctor = Doctor.new(params[:doctor])
+    @doctor = current_user.build_doctor(params[:doctor]) if current_user.try(:role) == 3
 
     respond_to do |format|
       if @doctor.save
@@ -57,7 +61,7 @@ class DoctorsController < ApplicationController
   # PUT /doctors/1
   # PUT /doctors/1.json
   def update
-    @doctor = Doctor.find(params[:id])
+    @doctor = current_user.doctor if current_user.try(:role) == 3
 
     respond_to do |format|
       if @doctor.update_attributes(params[:doctor])
@@ -73,7 +77,7 @@ class DoctorsController < ApplicationController
   # DELETE /doctors/1
   # DELETE /doctors/1.json
   def destroy
-    @doctor = Doctor.find(params[:id])
+    @doctor = current_user.doctor if current_user.try(:role) == 3
     @doctor.destroy
 
     respond_to do |format|

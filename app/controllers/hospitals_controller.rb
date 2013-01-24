@@ -1,8 +1,17 @@
 class HospitalsController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /hospitals
   # GET /hospitals.json
   def index
     @hospitals = Hospital.all
+    if current_user.try(:role) == 2
+      hos = current_user.hospital
+      if hos
+        @hospitals.delete(hos)
+        @hospitals.insert(0,hos)
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +33,7 @@ class HospitalsController < ApplicationController
   # GET /hospitals/new
   # GET /hospitals/new.json
   def new
-    @hospital = Hospital.new
+    # @hospital = Hospital.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +43,15 @@ class HospitalsController < ApplicationController
 
   # GET /hospitals/1/edit
   def edit
-    @hospital = Hospital.find(params[:id])
+    # @hospital = Hospital.find(params[:id])
+    @hospital = current_user.hospital if current_user.try(:role) == 2
   end
 
   # POST /hospitals
   # POST /hospitals.json
   def create
-    @hospital = Hospital.new(params[:hospital])
+    # @hospital = Hospital.new(params[:hospital])
+    @hospital = current_user.build_hospital(params[:hospital]) if current_user.try(:role) == 2
 
     respond_to do |format|
       if @hospital.save
@@ -56,7 +67,8 @@ class HospitalsController < ApplicationController
   # PUT /hospitals/1
   # PUT /hospitals/1.json
   def update
-    @hospital = Hospital.find(params[:id])
+    # @hospital = Hospital.find(params[:id])
+     @hospital = current_user.hospital if current_user.try(:role) == 2
 
     respond_to do |format|
       if @hospital.update_attributes(params[:hospital])
@@ -72,7 +84,8 @@ class HospitalsController < ApplicationController
   # DELETE /hospitals/1
   # DELETE /hospitals/1.json
   def destroy
-    @hospital = Hospital.find(params[:id])
+    # @hospital = Hospital.find(params[:id])
+    @hospital = current_user.hospital if current_user.try(:role) == 2
     @hospital.destroy
 
     respond_to do |format|

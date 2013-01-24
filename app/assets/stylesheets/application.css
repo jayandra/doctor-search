@@ -39,7 +39,7 @@ dl.show_page dt{
 dl.show_page dd{
 	margin-left : 175px;
 }
-dl.show_page dd div.span2{
+dl.show_page dd div.span2, dl.show_page dd div.span3{
 	margin-left : 0px;
 }
 dl.show_page dd:after {

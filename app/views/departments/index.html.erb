@@ -1,7 +1,9 @@
 <div class="page-header">
-  <%= link_to new_department_path, :class => 'btn btn-primary' do %>
-    <i class="icon-plus icon-white"></i>
-    New Department
+  <% if can? :create, Department.new %>
+    <%= link_to new_department_path, :class => 'btn btn-primary' do %>
+      <i class="icon-plus icon-white"></i>
+      New Department
+    <% end %>
   <% end %>
   <h1>Listing departments</h1>
 </div>
@@ -21,8 +23,10 @@
     <tr>
       <td><%= department.name %></td>
       <td><%= link_to 'Show', department %></td>
-      <td><%= link_to 'Edit', edit_department_path(department) %></td>
-      <td><%= link_to 'Destroy', department, confirm: 'Are you sure?', method: :delete %></td>
+      <td><%= link_to 'Edit', edit_department_path(department) if can? :edit, department %></td>
+      <td>
+        <%= link_to 'Destroy', department, confirm: 'Are you sure?', method: :delete if can? :destroy, department %>
+      </td>
     </tr>
 <% end %>
   </tbody>

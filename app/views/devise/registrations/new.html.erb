@@ -5,7 +5,7 @@
 	<div class="gb_padding">
 		<div class="form-inputs">
 			<%= f.input :email, :required => true, :autofocus => true %>
-			<%= f.input :role, :collection => [ ["Hospital Admin",1], ["Doctor",2], ["Normal User",3] ], 
+			<%= f.input :role, :collection => [ ["Hospital Admin",2], ["Doctor",3], ["Normal User",4] ],
 								:include_blank => false,
 								:required => true
 			%>
