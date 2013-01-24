@@ -1,5 +1,5 @@
 class Hospital < ActiveRecord::Base
-  attr_accessible :address, :city, :description, :image, :name, :phone1, :phone2, :department_ids
+  attr_accessible :address, :city, :description, :image_file_name, :name, :phone1, :phone2, :department_ids
 
   has_attached_file :image,
     :storage => :dropbox,
