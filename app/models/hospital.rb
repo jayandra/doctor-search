@@ -1,6 +1,14 @@
 class Hospital < ActiveRecord::Base
   attr_accessible :address, :city, :description, :image, :name, :phone1, :phone2, :department_ids
 
+  has_attached_file :image,
+    :storage => :dropbox,
+    :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
+    :styles => { :medium => "300x300", :thumb => "100x100" },
+    :dropbox_options => {
+      :path => proc { |style| "#{style}/#{id}_#{image.original_filename}" }
+    }
+
   belongs_to :user
   
   validates_presence_of :name, :address, :city, :phone1
