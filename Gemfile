@@ -49,6 +49,7 @@ gem 'hirb'
 gem 'pry-debugger'
 gem 'heroku'
 gem 'cancan'
+gem "paperclip-dropbox"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
