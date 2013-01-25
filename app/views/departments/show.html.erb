@@ -16,6 +16,9 @@
   <dt>Name:</dt>
   <dd><%= @department.name %></dd>
 
+  <dt>Details:</dt>
+  <dd><%= @department.description %></dd>
+
   <dt>Hospitals:</dt>
   <% @department.hospitals.each do |h| %>
     <dd><%= link_to h.name, hospital_path(h) %></dd>

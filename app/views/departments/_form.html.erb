@@ -4,8 +4,9 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <% if current_user.try(:role) == AppVariables::SUPER_ADMIN %>
-    	<%= f.association :hospitals, :wrapper_html => { :class => 'form_last_field' } %>
+    	<%= f.association :hospitals %>
     <% end %>
+    <%= f.input :description, :input_html => {:rows => 7}, :wrapper_html => {:class => "form_last_field1"} %>
   </div>
 </div>
 
