@@ -18,9 +18,9 @@ class Doctor < ActiveRecord::Base
 
   accepts_nested_attributes_for :involvements, :allow_destroy => true
   # validates_associated :involvements
-  scope :doc_like, lambda{|d| where(["doctors.name LIKE ?", "%#{d}%"])}
-  scope :dep_like, lambda{|de| where("departments.name LIKE ?", "%#{de}%")}
-  scope :hos_like, lambda{|h| where(["hospitals.name LIKE ?", "%#{h}%"])}
+  scope :doc_like, lambda{|d| where(["doctors.name ILIKE ?", "%#{d}%"])}
+  scope :dep_like, lambda{|de| where("departments.name ILIKE ?", "%#{de}%")}
+  scope :hos_like, lambda{|h| where(["hospitals.name ILIKE ?", "%#{h}%"])}
 
   def primary_hospital
     self.hospitals.find_by_id(primary_involvement)

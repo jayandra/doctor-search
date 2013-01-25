@@ -22,6 +22,6 @@ class Hospital < ActiveRecord::Base
   has_many :doctors, :through => :involvements, :dependent => :destroy
   has_one :featured_hospital, :dependent => :destroy
 
-  scope :hos_like, lambda{|h| where(["hospitals.name LIKE ?", "%#{h}%"])}
+  scope :hos_like, lambda{|h| where(["hospitals.name ILIKE ?", "%#{h}%"])}
 
 end
