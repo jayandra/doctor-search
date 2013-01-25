@@ -9,7 +9,7 @@ class Ability
     can :show, :all
     can :index, [Hospital, Department]
     cannot :index, Doctor
-    cannot :manage, [Involvement, Service]
+    cannot :manage, [Involvement, Service, FeaturedHospital]
 
     if user.role == 10          #super admin
         can :manage, :all

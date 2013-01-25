@@ -10,7 +10,7 @@
   <h1>Listing featured_hospitals</h1>
 </div>
 
-<dl>
+<dl class="show_page gb_padding">
   <dt>From:</dt>
   <dd><%= @featured_hospital.from %></dd>
 
@@ -21,6 +21,6 @@
   <dd><%= @featured_hospital.payment %></dd>
 
   <dt>Hospital:</dt>
-  <dd><%= @featured_hospital.hospital %></dd>
+  <dd><%= @featured_hospital.hospital.try(:name) %></dd>
 
 </dl>

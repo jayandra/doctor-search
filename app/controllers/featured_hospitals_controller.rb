@@ -1,4 +1,6 @@
 class FeaturedHospitalsController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /featured_hospitals
   # GET /featured_hospitals.json
   def index

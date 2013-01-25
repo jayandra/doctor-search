@@ -25,7 +25,7 @@
       <td><%= featured_hospital.from %></td>
       <td><%= featured_hospital.to %></td>
       <td><%= featured_hospital.payment %></td>
-      <td><%= featured_hospital.hospital %></td>
+      <td><%= featured_hospital.hospital.try(:name) %></td>
       <td><%= link_to 'Show', featured_hospital %></td>
       <td><%= link_to 'Edit', edit_featured_hospital_path(featured_hospital) %></td>
       <td><%= link_to 'Destroy', featured_hospital, confirm: 'Are you sure?', method: :delete %></td>

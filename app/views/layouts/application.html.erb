@@ -31,6 +31,9 @@
             <%= content_tag(:li, (link_to "Hospitals", hospitals_path), :class => active_link('hospitals') ) %>
             <%= content_tag(:li, (link_to "Specialities", departments_path), :class => active_link('departments') ) %>
             <%= content_tag(:li, (link_to "Doctors", doctors_path), :class => active_link('doctors') ) %>
+            <% if can? :manage, FeaturedHospital %>
+              <%= content_tag(:li, (link_to "Featured Hospitals", featured_hospitals_path), :class => active_link('featured_hospitals') ) %>
+            <% end %>
           </ul>
           <ul class="nav pull-right" role="menu" aria-labelledby="dLabel">
             <%= render 'devise/menu/registration_items' %>
