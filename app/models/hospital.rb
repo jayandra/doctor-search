@@ -4,7 +4,7 @@ class Hospital < ActiveRecord::Base
   has_attached_file :image,
     :storage => :dropbox,
     :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
-    :styles => { :medium => "300x300", :thumb => "100x100" },
+    :styles => { :medium => "300x300", :thumb => "100x100", :banner => "770x500" },
     :dropbox_options => {
       :path => proc { |style| "#{style}/#{id}_#{image.original_filename}" }
     }
