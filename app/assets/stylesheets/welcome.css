@@ -44,11 +44,12 @@
 
 /////// search result page //////
 
-#result_block .span4, #result_block .span12{
+#result_block .span12{
     padding:5px 0;
 }
 #result_block .span4{
-    width: 363px;
+    width: 353px;
+    padding: 5px;
 }
 #result_block .span12{
     width: 1150px;

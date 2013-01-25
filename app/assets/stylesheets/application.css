@@ -32,6 +32,11 @@
 .gb_padding .form_last_field{
 	margin-bottom: 0px !important;
 }
+.dark_green_block{
+	background-color: #327E59;
+	border-radius: 6px 6px 6px 6px;
+	margin:	5px 0;
+}
 dl.show_page dt{
 	float : left;
 	min-width : 125px;

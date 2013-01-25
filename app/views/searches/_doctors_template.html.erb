@@ -1,3 +1,4 @@
-<div class="span4 grey_block">
-	<%= link_to truncate(doctors_template.name, :length=>40, :omission => '...'), doctor_path(doctors_template) %>
+<div class="span4 dark_green_block">
+	<%= link_to truncate(doctors_template.name, :length=>40, :omission => '...'), doctor_path(doctors_template) %><br/>
+	<%= link_to truncate(doctors_template.primary_hospital.try(:name), :length=>40, :omission => '...'), hospital_path(doctors_template.primary_hospital) %>
 </div>
