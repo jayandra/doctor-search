@@ -14,9 +14,9 @@
 
 <dl class="show_page gb_padding" style="min-height:225px">
   <% if @hospital.image_file_name.present? %>
-    <div style="float:right">
-      <%= link_to image_tag(@hospital.image.url(:medium), :style => "width:300px;height:225px;"), 
-                  @hospital.image.url(:original), :target => "blank" %>
+    <div class = "hospital_image">
+      <%= link_to image_tag(@hospital.image.url(:medium), :style => "width:300px;height:225px;"),
+                  @hospital.image.url(:medium), :target => "blank" %>
     </div>
   <% end %>
   

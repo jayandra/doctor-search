@@ -8,8 +8,8 @@
     <%= f.input :phone1 %>
     <%= f.input :phone2 %>
     <%= f.input :image, :as => :file %>
-    <%= f.input :description %>
-    <%= f.association :departments, :wrapper_html => { :class => 'form_last_field' } %>
+    <%= f.association :departments %>
+    <%= f.input :description, :input_html => {:rows => 7}, :wrapper_html => {:class => "form_last_field"} %>
   </div>
 </div>
   <div class="form-actions">
