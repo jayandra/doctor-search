@@ -12,7 +12,13 @@
   <h1>Hospital Detail</h1>
 </div>
 
-<dl class="show_page gb_padding">
+<dl class="show_page gb_padding" style="min-height:225px">
+  <% if @hospital.image_file_name.present? %>
+    <div style="float:right">
+      <%= link_to image_tag(@hospital.image.url(:medium)), @hospital.image.url(:original), :target => "blank" %>
+    </div>
+  <% end %>
+  
   <dt>Name:</dt>
   <dd><%= @hospital.name %></dd>
 
@@ -27,9 +33,6 @@
 
   <dt>Phone2:</dt>
   <dd><%= @hospital.phone2 %></dd>
-
-  <dt>Image:</dt>
-  <dd><%= @hospital.image %></dd>
 
   <dt>Description:</dt>
   <dd><%= @hospital.description %></dd>
