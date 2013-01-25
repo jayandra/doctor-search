@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to new_featured_hospital_path, :class => 'btn btn-primary' do %>
+    <i class="icon-plus icon-white"></i>
+    New Featured hospital
+  <% end %>
+  <h1>Listing featured_hospitals</h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Payment</th>
+      <th>Hospital</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @featured_hospitals.each do |featured_hospital| %>
+    <tr>
+      <td><%= featured_hospital.from %></td>
+      <td><%= featured_hospital.to %></td>
+      <td><%= featured_hospital.payment %></td>
+      <td><%= featured_hospital.hospital %></td>
+      <td><%= link_to 'Show', featured_hospital %></td>
+      <td><%= link_to 'Edit', edit_featured_hospital_path(featured_hospital) %></td>
+      <td><%= link_to 'Destroy', featured_hospital, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

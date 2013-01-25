@@ -1,4 +1,7 @@
 DoctorSearch::Application.routes.draw do
+  resources :featured_hospitals
+
+
   devise_for :users, :controllers => {:sessions => 'sessions'}
   as :user do
     get 'login' => 'sessions#new', :as => :login
