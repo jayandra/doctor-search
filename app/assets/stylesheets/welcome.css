@@ -22,6 +22,23 @@
 #banner_block .green_block{
 	min-height:500px
 }
+#myCarousel{
+  margin-bottom: 0px;
+}
+#hospital_descriptions{
+  margin: 10px;
+}
+#hospital_descriptions h4{
+  text-align: center;
+}
+#hospital_descriptions .hospital_description{
+  font-size: 15px;
+  display: none;
+}
+#hospital_descriptions .active_description{
+  display: block !important;
+}
+
 
 
 

@@ -3,10 +3,39 @@
 <div id = "banner_block">
   <div class="row">
     <div class="span8 green_block">
-      Featured images
+
+
+    	<div id="myCarousel" class="carousel slide">
+    		<div class="carousel-inner">
+    			<!-- Carousel items -->
+    			<% @featured_hospitals.each_with_index do |featured_hospital, index| %>
+	    			<div class = "<%= index == 0 ? 'item active' : 'item' %>" >
+	    				<%= image_tag( featured_hospital.hospital.image.url(:banner), :style => "width:770px;height:500px;") %>
+	    				<div class="carousel-caption">
+	    					<h4><%= link_to featured_hospital.hospital.try(:name), hospital_path(featured_hospital.hospital) %></h4>
+	    				</div>
+	    			</div>
+      		<% end %>
+    		</div>
+    		<!-- Carousel nav -->
+    		<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    		<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    	</div>
     </div>
+
+
     <div class="span4 green_block">
-      corresponding descriptions
-    </div>
+    	<div id="hospital_descriptions">
+         <% @featured_hospitals.each_with_index do |featured_hospital, index| %>
+         <div class = "<%= index == 0 ? 'active_description hospital_description' : 'hospital_description' %>">
+           <h4><%= link_to featured_hospital.hospital.try(:name), hospital_path(featured_hospital.hospital) %></h4>
+           <div>
+              <%= featured_hospital.hospital.try(:description) %>
+          </div>
+      </div>
+      <% end %>
+  </div>
+</div>
+
   </div>
 </div>
