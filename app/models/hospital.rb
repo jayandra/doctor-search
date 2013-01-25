@@ -1,7 +1,7 @@
 class Hospital < ActiveRecord::Base
-  attr_accessible :address, :city, :description, :image, :name, :phone1, :phone2, :department_ids
+  attr_accessible :address, :city, :description, :image_file_name, :name, :phone1, :phone2, :department_ids
 
-  has_attached_file :image,
+  has_attached_file :image_file_name,
     :storage => :dropbox,
     :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
     :styles => { :medium => "300x300", :thumb => "100x100" },
