@@ -39,6 +39,7 @@ group :development do
   gem 'libnotify'
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
+  gem 'rack-mini-profiler'
 end
 
 gem 'devise', '2.2.0'
