@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  load_and_authorize_resource :only => [:index, :edit, :update, :destroy]
+
   # GET /searches
   # GET /searches.json
   def index

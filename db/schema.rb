@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125035229) do
+ActiveRecord::Schema.define(:version => 20130127213756) do
 
   create_table "departments", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20130125035229) do
     t.datetime "updated_at",  :null => false
     t.text     "description"
   end
+
+  add_index "departments", ["name"], :name => "index_departments_on_name"
 
   create_table "doctors", :force => true do |t|
     t.float    "checkup_time",        :default => 0.5
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130125035229) do
   end
 
   add_index "doctors", ["department_id"], :name => "index_doctors_on_department_id"
+  add_index "doctors", ["name"], :name => "index_doctors_on_name"
   add_index "doctors", ["user_id"], :name => "index_doctors_on_user_id"
 
   create_table "featured_hospitals", :force => true do |t|
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20130125035229) do
     t.string   "city"
     t.string   "phone1"
     t.string   "phone2"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "user_id"
@@ -66,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20130125035229) do
     t.datetime "image_updated_at"
   end
 
+  add_index "hospitals", ["name"], :name => "index_hospitals_on_name"
   add_index "hospitals", ["user_id"], :name => "index_hospitals_on_user_id"
 
   create_table "involvements", :force => true do |t|
