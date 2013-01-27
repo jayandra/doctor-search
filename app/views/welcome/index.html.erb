@@ -1,5 +1,3 @@
-<%= javascript_tag "var hospitals = #{ @all_hospitals };" %>
-<%= javascript_tag "var specialities = #{ @all_specialities };" %>
 <%= render 'search_block' %>
 
 <div id = "banner_block">
@@ -32,7 +30,7 @@
          <div class = "<%= index == 0 ? 'active_description hospital_description' : 'hospital_description' %>">
            <h4><%= link_to featured_hospital.hospital.try(:name), hospital_path(featured_hospital.hospital) %></h4>
            <div>
-              <%= featured_hospital.hospital.try(:description) %>
+              <%= truncate(featured_hospital.hospital.try(:description), :length=>1125, :omission => '...') %>
           </div>
       </div>
       <% end %>

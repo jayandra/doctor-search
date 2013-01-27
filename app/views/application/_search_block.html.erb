@@ -1,3 +1,6 @@
+<%= javascript_tag "var hospitals = #{ Hospital.pluck(:name) };" %>
+<%= javascript_tag "var specialities = #{ Department.pluck(:name) };" %>
+
 <div id = "search_block" class="green_block">
 	<div class = "row">
 		<%= simple_form_for (Search.new), :defaults => {
@@ -11,3 +14,30 @@
 		<% end %>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$("#search_department").typeahead({
+      source: specialities,
+      minLength: 3
+    });
+	$("#search_hospital").typeahead({
+      source: hospitals,
+      minLength: 3
+    });
+	$("#search_doctor").typeahead({
+      source: function(query, process) {
+        $.ajax({
+          url: "/searches/doctors_typeahead.json",
+          type: "GET",
+          data: {
+            query: $("#search_doctor").val()
+          },
+          dataType: "JSON",
+          success: function(results) {
+            return process(results);
+          }
+        });
+      },
+      minLength: 3
+    });
+</script>
