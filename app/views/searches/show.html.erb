@@ -3,15 +3,23 @@
 <div id = "result_block" class="green_block">
   <div class="row">
     <div class="span12">
-      <h4>Search Results for:
+      <h4 id="search_query">Search Results for:
+        <span class="white_text" style="margin-left:10px">
         <%= @search.doctor.present? ? " #{@search.doctor} | " : " - | " %>
         <%= @search.department.present? ? "#{@search.department} | " : "- | " %>
         <%= @search.hospital.present? ? "#{@search.hospital} | " : "-"  %>
+        </span>
       </h4>
     </div>
 
     <div id="results">
       <%= render :partial => "#{@search.search_template}_template", :collection => @search_results %>
+      <% if @search_results.empty? %>
+        <div class="span12 no_result white_text dark_green_block">
+          Sorry, no results could be found<br/>
+          Please try again with some other query
+        </div>
+      <% end %>
     </div>
     
   </div>

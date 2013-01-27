@@ -34,6 +34,7 @@
 #hospital_descriptions .hospital_description{
   font-size: 15px;
   display: none;
+  text-align: justify;
 }
 #hospital_descriptions .active_description{
   display: block !important;
@@ -45,13 +46,16 @@
 
 
 /////// search result page //////
-
 #result_block .span12{
     padding:5px 0;
 }
 #result_block .span4{
     width: 353px;
     padding: 5px;
+}
+#result_block .no_result{
+    padding: 10px;
+    width: 1129px !important;
 }
 #result_block .span12{
     width: 1150px;

@@ -57,3 +57,6 @@ dl.show_page dd:after {
 .right{
 	float: right;
 }
+.white_text{
+	color: #fff;
+}
