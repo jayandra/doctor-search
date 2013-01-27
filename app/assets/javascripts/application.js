@@ -14,5 +14,5 @@
 //= require jquery_ujs
 
 //= require bootstrap-carousel
-
+//= require bootstrap-typeahead
 //= require_tree .

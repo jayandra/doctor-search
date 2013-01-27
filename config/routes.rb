@@ -12,7 +12,11 @@ DoctorSearch::Application.routes.draw do
   resources :services
 
 
-  resources :searches
+  resources :searches do
+    collection do
+      get 'doctors_typeahead'
+    end
+  end
 
 
   resources :doctors

@@ -38,7 +38,9 @@
 #hospital_descriptions .active_description{
   display: block !important;
 }
-
+.typeahead{
+  width: 337px;
+}
 
 
 

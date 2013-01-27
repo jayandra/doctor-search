@@ -82,4 +82,14 @@ class SearchesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def doctors_typeahead
+    query = params[:query]
+    @doctors = Doctor.where(["name ILIKE ?", "%#{query}%"]).limit(5).pluck(:name)
+
+    respond_to do |format|
+      format.json { render json: @doctors }
+    end
+  end
+
 end
