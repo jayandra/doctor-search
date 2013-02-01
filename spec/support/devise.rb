@@ -29,9 +29,21 @@ module ValidUserRequestHelper
   end
 end
 
+
+# http://www.clevertakes.com/blog/2013/01/30/how-do-i-add-devise-login-method-to-my-rspec-feature-test/
+include Warden::Test::Helpers
+module FeatureHelpers
+  def sign_in_as_a_admin_user
+    user = FactoryGirl.create(:admin)
+    login_as user, scope: :user
+    user
+  end
+end
+
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include ControllerHelpers, :type => :controller
   config.include ValidUserHelper, :type => :controller
   config.include ValidUserRequestHelper, :type => :request
+  config.include FeatureHelpers, type: :feature
 end

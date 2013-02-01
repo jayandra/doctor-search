@@ -2,8 +2,9 @@ require 'spec_helper'
 
 feature "F: department" do
 	before do
-		create(:department)
+		@d = create(:department)
 		3.times{ create(:hospital) }
+		sign_in_as_a_admin_user
 		visit departments_path
 	end
 
@@ -14,7 +15,7 @@ feature "F: department" do
 		select Hospital.first.name, :from => "department_hospital_ids"
 		select Hospital.last.name, :from => "department_hospital_ids"
 		click_button("Create Department")
-		current_url.should == department_url(:id => 2)
+		current_url.should == department_url(:id => Department.last.id)
 		page.should have_content "Department was successfully created"
 		page.should have_content "department - name"
 		Department.last.hospitals.size.should == 2
@@ -22,14 +23,14 @@ feature "F: department" do
 
 	scenario "editing of existing department" do
 		click_link("Edit")
-		current_url.should == edit_department_url(:id =>1)
+		current_url.should == edit_department_url(:id =>@d.id)
 		fill_in "department_name", :with => "department - name - changed"
-		select Hospital.find(2).name, :from => "department_hospital_ids"
+		select Hospital.all.second.name, :from => "department_hospital_ids"
 		click_button("Update Department")
-		current_url.should == department_url(:id => 1)
+		current_url.should == department_url(:id => @d.id)
 		page.should have_content "Department was successfully updated"
 		page.should have_content "department - name - changed"
-		page.should have_content Hospital.find(2).name
+		page.should have_content Hospital.all.second.name
 		Department.last.hospitals.size.should == 1
 	end
 end
