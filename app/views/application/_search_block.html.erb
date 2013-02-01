@@ -7,9 +7,9 @@
 			:label => false,
 			:wrapper_html => { :class => 'span3' },
 		} do |f| %>
-		<%= f.input :doctor, :placeholder=>"   Doctor's Name", :input_html => {:autocomplete => "off"} %>
-		<%= f.input :department, :placeholder=>"   Department's Name", :input_html => {:autocomplete => "off"} %>
-		<%= f.input :hospital, :placeholder=>"   Hospital's Name", :input_html => {:autocomplete => "off"} %>
+		<%= f.input :doctor, :placeholder=>"  Doctor's Name  ( eg. ram )", :input_html => {:autocomplete => "off"} %>
+		<%= f.input :department, :placeholder=>"  Department's Name  ( eg. cardiology )", :input_html => {:autocomplete => "off"} %>
+		<%= f.input :hospital, :placeholder=>"  Hospital's Name  ( eg. bir hospital )", :input_html => {:autocomplete => "off"} %>
 		<%= f.button :submit, 'Get Results'%>
 		<% end %>
 	</div>
