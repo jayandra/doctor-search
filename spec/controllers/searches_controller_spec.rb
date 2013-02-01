@@ -33,6 +33,9 @@ describe SearchesController do
   def valid_session
     {}
   end
+  before do
+    signed_in_as_a_admin_user
+  end
 
   describe "GET index" do
     it "assigns all searches as @searches" do
