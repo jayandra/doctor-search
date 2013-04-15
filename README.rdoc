@@ -1,9 +1,0 @@
-== Template Rails Project
-
-This is a sample rails project with setup for twitter bootstrap, test, and authentication.
-
-To start any project:
-
-1. clone the repo
-2. change the remote branch to yours, or delete the current repo and initialize a new git repo
-3. start scaffolding and working on your project
