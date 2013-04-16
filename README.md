@@ -27,3 +27,6 @@ Add file config/dropbox.yml with the dropbox credentials:
 Links for app setup and accessing the credentials:
 * https://github.com/janko-m/paperclip-dropbox
 * https://www.dropbox.com/developers/apps
+
+##Demo Page:
+The project can be visited at the link: http://doctor-search.herokuapp.com/
